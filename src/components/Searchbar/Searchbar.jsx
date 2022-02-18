@@ -21,7 +21,7 @@ if(this.state.searchingName.trim() === ""){
 }
 
     this.props.onSubmit(this.state.searchingName);
-    this.setState({searchingName: ""});
+    // this.setState({searchingName: ""});
 };
 
     render(){

@@ -17,21 +17,22 @@ class ImageGallery extends Component {
 
   
   componentDidUpdate(prevProps, prevState) {
-    const prevName = prevProps.pictureName;
-    const nextName = this.props.pictureName;
+    const prevName = prevProps.searchingName;
+    const nextName = this.props.searchingName;
     const prevPage = prevState.page;
     const nextPage = this.state.page;
-
+console.log("qwe");
     if ( prevName !== nextName) {
       this.setState({ status: 'pending'})
-      
+      console.log("qwe")
       Api.fetchPictures(nextName, 1)
         .then((data) => {
+          console.log(data);
           this.setState({
             pictures: data.hits,
             status: 'resolved'
           })
-          if (data.total === 0) {return Promise.reject( new Error(`Error search result, try again`))}
+          // if (data.total === 0) {return Promise.reject( new Error(`Error search result, try again`))}
       })
       .catch(error => this.setState({ error, status: 'rejected' }))
     };
@@ -48,11 +49,11 @@ class ImageGallery extends Component {
     }
   }
 
-  onLoadMore() {
-    this.setState((prevState) => ({
-      page: prevState.page + 1,
-    }));
-  };
+  // onLoadMore() {
+  //   this.setState((prevState) => ({
+  //     page: prevState.page + 1,
+  //   }));
+  // };
 
   render() { 
     const { pictures, error, status } = this.state

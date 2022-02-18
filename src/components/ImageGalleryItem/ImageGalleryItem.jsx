@@ -1,4 +1,4 @@
-import "./ImageGalleryItem.css";
+// import "./ImageGalleryItem.css";
 
 export default function ImageGalleryItem ({pictures}){
     return pictures.map(({id, webformatURL, largeImageURL }) => (
