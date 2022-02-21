@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import {toast} from "react-toastify";
-// import styled from '@emotioxn/styled';
-// import "./Searchbar.css";
-
+import './Searchbar.css';
 
 class Searchbar extends Component {
 
@@ -21,19 +19,18 @@ if(this.state.searchingName.trim() === ""){
 }
 
     this.props.onSubmit(this.state.searchingName);
-    // this.setState({searchingName: ""});
 };
 
     render(){
         return (
-<header className="Searchbar">
-  <form className="SearchForm" onSubmit={this.handleSubmit}>
+<header className='formHeader'>
+  <form  className='form' onSubmit={this.handleSubmit}>
     <button type="submit" className="SearchForm-button">
      Search
     </button>
 
-    <input
-      className="SearchForm-input"
+    <input 
+    className='formInput'
       type="text"
       autoComplete="off"
       value={this.state.searchingName}

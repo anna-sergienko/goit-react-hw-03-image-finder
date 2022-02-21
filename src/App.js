@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import Modal from './components/Modal/Modal';
+import Modal from './components/Modal/Modal';
 import Searchbar from './components/Searchbar/Searchbar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 
 
 
-
-
 class App extends Component{
 state ={
-  searchingName: " ",
-//   showModal: false,
-//   imgBox: {},
+  searchingName: "",
+  showModal: false,
+  imgBox: {},
 
 }
 
@@ -21,21 +17,32 @@ state ={
 this.setState({searchingName});
   }
 
-//   toggleModal = ()=>{
-// this.setState({showModal: !this.state.showModal});
-//   }
+  toggleModal = ()=>{
+this.setState({showModal: !this.state.showModal});
+  }
 
 
+openModal = evt =>{
+  this.toggleModal();
+  const imgBox ={
+    largeImageURL: evt.currentTarget.dataset.url,
+    alt: evt.currentTarget.alt,
+  }
+  this.setState({imgBox})
 
+}
 
 render(){
-  const {searchingName} = this.state;
+  const {searchingName, showModal, imgBox} = this.state;
   return(
     <>
+  {!showModal &&  <Searchbar onSubmit={this.handleFormSubmit}/>}
+    <ImageGallery searchingName={searchingName} openModal={this.openModal}/>
   
-    <Searchbar onSubmit={this.handleFormSubmit}/>
-    <ImageGallery searchingName={searchingName} />
-  
+  {showModal && 
+  <Modal onClose={this.toggleModal}>
+    <img  src={imgBox.largeImageURL} alt={imgBox.alt}/>
+    </Modal>}
     </>
   )
 }
