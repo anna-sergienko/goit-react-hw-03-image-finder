@@ -72,7 +72,7 @@ class ImageGallery extends Component {
       return (
       <>
         <ul className="ImageGalleryList">
-        <ImageGalleryItem pictures={pictures} openModal={this.props.op}/>
+        <ImageGalleryItem pictures={pictures} openModal={this.props.openModal}/>
         </ul>
         <Button onLoadMore={() => this.onLoadMore()}/>
       </> 
