@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {toast} from "react-toastify";
 import PropTypes from 'prop-types';
-import './Searchbar.css';
+import {FormHeader, SearchForm, SearchFormButton, FormInput} from './Searchbar.styled';
 
 
 class Searchbar extends Component {
@@ -10,12 +10,13 @@ state={
   searchingName: '',
 }
 
+
 handleNameChange = evt =>{
 this.setState({searchingName: evt.target.value.toLowerCase()});
 }
 
 handleSubmit = evt =>{
-    evt.preventDefault();
+evt.preventDefault();
 if(this.state.searchingName.trim() === ""){
     return toast("Enter name, please!");
 }
@@ -23,16 +24,19 @@ if(this.state.searchingName.trim() === ""){
     this.props.onSubmit(this.state.searchingName);
 };
 
+
+
+
+
     render(){
         return (
-<header className='formHeader'>
-  <form  className='form' onSubmit={this.handleSubmit}>
-    <button type="submit" className="SearchForm-button">
+<FormHeader>
+  <SearchForm onSubmit={this.handleSubmit}>
+    <SearchFormButton type="submit" >
      Search
-    </button>
+    </SearchFormButton>
 
-    <input 
-    className='formInput'
+    <FormInput
       type="text"
       autoComplete="off"
       value={this.state.searchingName}
@@ -40,8 +44,8 @@ if(this.state.searchingName.trim() === ""){
       autoFocus
       placeholder="Search images and photos"
     />
-  </form>
-</header>
+  </SearchForm>
+</FormHeader>
         )
     }
 };

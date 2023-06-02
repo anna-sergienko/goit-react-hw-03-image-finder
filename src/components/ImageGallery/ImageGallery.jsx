@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import { Component } from "react";
-import './ImageGallery.css';
+import {ImageGalleryList, PreTitle} from './ImageGallery.styled';
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 import Loader from "../Loader/Loader";
 import Button from "../Button/Button";
@@ -57,7 +57,7 @@ class ImageGallery extends Component {
 
 
     if (status === 'idle') {
-        return <h1 className="preTitle">Enter staff you want to find</h1>
+        return <PreTitle>Enter staff you want to find</PreTitle>
     }
     
     if (status === 'pending') {
@@ -71,9 +71,9 @@ class ImageGallery extends Component {
     if (status === 'resolved') {
       return (
       <>
-        <ul className="ImageGalleryList">
+        <ImageGalleryList>
         <ImageGalleryItem pictures={pictures} openModal={this.props.openModal}/>
-        </ul>
+        </ImageGalleryList>
         <Button onLoadMore={() => this.onLoadMore()}/>
       </> 
       )

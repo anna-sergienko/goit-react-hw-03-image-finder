@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import './ImageGalleryItem.css';
+import {GalleryItem, GalleryItemImage} from './ImageGalleryItem.styled.js';
 
 
 export default function ImageGalleryItem ({pictures, openModal}){
     return pictures.map(({id, webformatURL, largeImageURL }) => (
-<li className="GalleryItem" key={id}>
-  <img className="GalleryItemImage"
+<GalleryItem key={id}>
+  <GalleryItemImage
   src={webformatURL} 
   alt={`pic ${id}`} 
   data-url={largeImageURL}
   onClick={openModal}
   />
-</li>
+</GalleryItem>
     ))
 }
 

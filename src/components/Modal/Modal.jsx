@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { createPortal } from "react-dom";
-import "./Modal.css";
+import {Overlay, ModalWrapper} from  "./Modal.styled.js";
 
 
 const modalRoot = document.querySelector('#modal-root');
@@ -33,11 +33,11 @@ onBackdrop = evt =>{
 
    render(){
        return createPortal(
-        <div className="overlay" onClick={this.onBackdrop}>
-        <div className="modal">
+        <Overlay onClick={this.onBackdrop}>
+        <ModalWrapper>
         {this.props.children}
-        </div>
-      </div>, modalRoot
+        </ModalWrapper>
+      </Overlay>, modalRoot
        )
    } 
 }
