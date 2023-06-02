@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import { Component } from "react";
 import './ImageGallery.css';
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
@@ -85,6 +85,9 @@ class ImageGallery extends Component {
  
 export default ImageGallery;
 
- 
+ImageGallery.propTypes = {
+openModal: PropTypes.func,
+searchingName: PropTypes.string.isRequired,
+}
 
 

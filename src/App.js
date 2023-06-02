@@ -17,8 +17,9 @@ state ={
 this.setState({searchingName});
   }
 
+
+
   toggleModal = ()=>{
-  
 this.setState(prev => ({showModal: !prev.showModal}));
   }
 
